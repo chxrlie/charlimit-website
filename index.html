@@ -12,11 +12,40 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #f0f0f0; /* Base background */
             flex-direction: column;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden; /* Prevents scrollbars from large box-shadow */
+            animation: portal-shimmer 6s ease-in-out infinite alternate;
         }
         h1 {
             color: #333;
+            z-index: 1; /* Ensure text is above the portal effect if it overlaps */
+        }
+        p {
+            z-index: 1; /* Ensure text is above the portal effect */
+        }
+
+        @keyframes portal-shimmer {
+            0% {
+                box-shadow:
+                    0 0 10px 5px rgba(0, 123, 255, 0.7), /* Light Blue */
+                    0 0 20px 10px rgba(75, 0, 130, 0.5), /* Indigo */
+                    inset 0 0 15px 5px rgba(0, 123, 255, 0.4);
+            }
+            50% {
+                box-shadow:
+                    0 0 20px 10px rgba(0, 191, 255, 0.8), /* Deep Sky Blue */
+                    0 0 30px 15px rgba(138, 43, 226, 0.6), /* Blue Violet */
+                    inset 0 0 25px 10px rgba(0, 191, 255, 0.5);
+            }
+            100% {
+                box-shadow:
+                    0 0 15px 8px rgba(0, 123, 255, 0.75), /* Light Blue */
+                    0 0 25px 12px rgba(75, 0, 130, 0.55), /* Indigo */
+                    inset 0 0 20px 8px rgba(0, 123, 255, 0.45);
+            }
         }
     </style>
 </head>
